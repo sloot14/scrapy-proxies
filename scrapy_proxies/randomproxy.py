@@ -93,8 +93,8 @@ class RandomProxy(object):
 
         proxy_user_pass = self.proxies[proxy_address]
 
+        request.meta['proxy'] = proxy_address
         if proxy_user_pass:
-            request.meta['proxy'] = proxy_address
             basic_auth = 'Basic ' + base64.b64encode(proxy_user_pass.encode()).decode()
             request.headers['Proxy-Authorization'] = basic_auth
         else:
